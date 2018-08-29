@@ -1,12 +1,10 @@
 <template>
-    <main>
         <section id="profiles-container">
             <h2>Profiles</h2>
             <ul id="profiles">
                 <Card v-for="dino in dinosArray" :key='dino.id' :dino='dino' />
             </ul>
         </section>
-    </main>
 </template>
 
 <script>
@@ -22,18 +20,6 @@ export default {
 </script>
 
 <style>
-main {
-    grid-row: 2/3;
-}
-
-main section {
-    padding: 0 20px 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, x100);
-    grid-gap: 10px;
-    margin: 0 auto;
-    width: 50%;
-}
 
 small {
     color: black;

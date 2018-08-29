@@ -1,12 +1,14 @@
 <template>
-    <li>
-    </li>
+    <div>
+        <li>{{skill}}</li>
+    </div>
 </template>
 
 <script>
-// export default {
-    
-// }
+export default {
+    name: 'Skill',
+    props: ['skill']
+}
 </script>
 
 <style>

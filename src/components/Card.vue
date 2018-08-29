@@ -1,28 +1,38 @@
 <template>
     <li>
         <div class="profile-card">
-        <header>
-            <img :src="dino.image" />
-            <h2>{{dino.name}}</h2>
-        </header>
-        <!-- <section class="skills-container hidden"> -->
-            <!-- <SkillList /> -->
-        <!-- </section>     -->
+            <header v-on:click="toggleSkillList">
+                <img :src="dino.image" />
+                <h2>{{dino.name}}</h2>
+            </header>
+            <section v-if="hidden" class="skills-container">
+                <SkillList v-bind:skills= "dino.skills"/>
+            </section>    
         </div>
     </li>    
 </template>
 
 <script>
-// import SkillList from './SkillList'
+import SkillList from './SkillList'
 
 export default {
     name: 'Card',
     components:{
-        // SkillList
+        SkillList
+    },
+    data(){
+        return {
+            hidden: false
+        }
+    }, 
+    methods: {
+        toggleSkillList: function() {
+            this.hidden = !this.hidden
+        }
     },
     props: ['dino']
-    
 }
+
 </script>
 
 <style>
