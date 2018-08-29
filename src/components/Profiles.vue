@@ -2,14 +2,22 @@
     <main>
         <section id="profiles-container">
             <h2>Profiles</h2>
-            <ul id="profiles"></ul>
+            <ul id="profiles">
+                <Card v-for="dino in dinosArray" :key='dino.id' :dino='dino' />
+            </ul>
         </section>
     </main>
 </template>
 
 <script>
+import Card from './Card'
+
 export default {
-    
+    name: 'Profiles',
+    components: {
+        Card
+    },
+    props:['dinosArray']
 }
 </script>
 
@@ -21,7 +29,7 @@ main {
 main section {
     padding: 0 20px 0 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, x100%);
+    grid-template-columns: repeat(auto-fit, x100);
     grid-gap: 10px;
     margin: 0 auto;
     width: 50%;
@@ -35,28 +43,5 @@ small {
 
 p {
     font-size: .8rem;
-}
-
-.profile-card {
-    border-radius: 6px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    /* margin: 0 auto 10px auto; */
-}
-
-.profile-header {
-    display: flex;
-    flex-flow: row nowrap;
-}
-
-.profile-header img {
-    width: 100px;
-    height: 100px;
-    border: 1px solid darkgrey;
-    margin: 0 10px 0 10px;
-}
-
-.skills-list {
-    list-style: none;
 }
 </style>

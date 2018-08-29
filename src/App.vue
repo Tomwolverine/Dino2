@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <Profiles/>
-    <Skill/>
+    <Profiles v-bind:dinosArray="dinos" />
     <Footer/>
   </div>
 </template>
@@ -10,7 +9,6 @@
 <script>
 import Header from './components/Header'
 import Profiles from './components/Profiles'
-import Skill from './components/Skill'
 import Footer from './components/Footer'
 
 export default {
@@ -18,9 +16,22 @@ export default {
   components: {
     Header,
     Profiles,
-    Skill,
     Footer
-  }
+  },
+  data() {
+    return {
+      dinos: [],
+      apiURL: "https://dino2-server.herokuapp.com/"
+    }
+  },
+  created() {
+    fetch(this.apiURL)
+      .then(response => {return response.json()})
+      .then((json) => {
+        this.dinos = json.dinosaurs;
+      })
+
+    }  
 }
 </script>
 
@@ -33,7 +44,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-/* main {
+/* 
+main {
   grid-row: 2/3;
 }
 
@@ -54,6 +66,7 @@ small {
 
 p {
   font-size: .8rem;
-} */
+} 
+*/
 
 </style>
